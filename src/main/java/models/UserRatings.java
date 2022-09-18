@@ -17,6 +17,10 @@ public class UserRatings {
     @JoinColumn(name = "media_id")
     private Media media;
 
+    @ManyToOne
+    @JoinColumn(name = "user_Id")
+    private User user;
+
     public Media getMedia() {
         return media;
     }
@@ -25,12 +29,13 @@ public class UserRatings {
         this.media = media;
     }
 
-    public UserRatings(Long id, String mediaName, String description, int stars) {
+    public UserRatings(Long id, String mediaName, String description, int stars,User user) {
         this.id = id;
         this.mediaName = mediaName;
         this.description = description;
         this.stars = stars;
         this.date = new Date();
+        this.user=user;
     }
 
     public UserRatings() {

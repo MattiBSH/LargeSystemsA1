@@ -24,6 +24,8 @@ public class User {
     @JoinColumn(name = "subscription_id")
     private Subscription subscription;
 
+
+
     public User() {
     }
 
