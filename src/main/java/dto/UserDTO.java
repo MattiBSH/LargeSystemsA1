@@ -1,54 +1,20 @@
-package models;
+package dto;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.*;
-
-@Entity
-@Table(	name = "users",
-        uniqueConstraints = {
-                @UniqueConstraint(columnNames = "email")
-        })
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class UserDTO {
     private Long id;
     private String username;
     private String email;
     private String password;
     private String registeredSince;
     private int accountNumber;
-    @ManyToOne
-    @JoinColumn(name = "subscription_id")
-    private Subscription subscription;
 
-    public User() {
-    }
-
-    public User(Long id, String username, String email, String password, String registeredSince, int accountNumber) {
+    public UserDTO(Long id, String username, String email, String password, String registeredSince, int accountNumber) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.registeredSince = registeredSince;
         this.accountNumber = accountNumber;
-    }
-
-    public Subscription getSubscription() {
-        return subscription;
-    }
-
-    public void setSubscription(Subscription subscription) {
-        this.subscription = subscription;
-    }
-
-    public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.registeredSince= LocalDateTime.now().toString();
     }
 
     public Long getId() {
@@ -81,14 +47,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getDate() {
-        return registeredSince;
-    }
-
-    public void setDate(String date) {
-        this.registeredSince = date;
     }
 
     public String getRegisteredSince() {
