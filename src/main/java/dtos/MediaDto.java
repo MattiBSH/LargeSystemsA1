@@ -14,6 +14,15 @@ public class MediaDto implements Serializable {
         this.type = type;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MediaDto entity = (MediaDto) o;
+        return Objects.equals(this.id, entity.id) &&
+                Objects.equals(this.name, entity.name) &&
+                Objects.equals(this.type, entity.type);
+    }
     public Long getId() {
         return id;
     }
@@ -24,16 +33,6 @@ public class MediaDto implements Serializable {
 
     public int getType() {
         return type;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MediaDto entity = (MediaDto) o;
-        return Objects.equals(this.id, entity.id) &&
-                Objects.equals(this.name, entity.name) &&
-                Objects.equals(this.type, entity.type);
     }
 
     @Override
